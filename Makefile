@@ -1,0 +1,9 @@
+LILAC=~/.cabal/bin/lilac
+DIST=dist
+
+build:
+	@mkdir -p $(DIST)
+	@cp style.css $(DIST) 
+	$(LILAC) build
+
+.PHONY: build

@@ -6,7 +6,10 @@
   (Joins 
     [ DocType
       (Html 'en' (Joins 
-        [ (Head (Title (Join title ' | marcia.li')))
+        [ (Head (Joins 
+            [ (Title (Join title ' | marcia.li'))
+              (Stylesheet 'style.css')
+            ]))
           (Body (Join content Copyright))
         ]))
     ]))
