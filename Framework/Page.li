@@ -3,7 +3,8 @@
 (defun Page [content] 
   (Joins 
     [ DocType
-      (Html 'en' '')
-      (Head '')
-      (Body content)
+      (Html 'en' (Joins 
+        [ (Head '')
+          (Body content)
+        ]))
     ]))
