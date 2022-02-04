@@ -1,6 +1,6 @@
 (use 'Utility/Html')
 
-(deval Copyright (Footer (Link 'https://marcia.li/copyright' '© dmarcia 2022')))
+(deval Copyright (Footer (Link '/copyright' '© dmarcia 2022')))
 
 (defun Page [title content] 
   (Joins 
