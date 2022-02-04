@@ -1,0 +1,9 @@
+(use 'Utility/Html')
+
+(defun Page [content] 
+  (Joins 
+    [ DocType
+      (Html 'en' '')
+      (Head '')
+      (Body content)
+    ]))

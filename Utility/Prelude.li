@@ -1,0 +1,4 @@
+(deval Joins (Fold Join ''))
+(defun Id [x] x)
+(defun Compose [f g x] (f (g x)))
+(deval Composes (Fold Compose Id))

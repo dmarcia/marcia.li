@@ -1,0 +1,9 @@
+(use 'Utility/Prelude')
+
+(deval DocType '<!doctype html>')
+(defun Tag1 [tag a inner] (Joins ['<' tag ' ' a '>' inner '</' tag '>' ]))
+(defun Tag [tag inner] (Joins ['<' tag '>' inner '</' tag '>']))
+(defun Html [lang inner] (Tag1 'html' (Joins ['lang=' '"' lang '"']) inner))
+(deval Head (Tag 'head'))
+(deval Body (Tag 'body'))
+(deval P (Tag 'p'))
