@@ -1,10 +1,12 @@
 (use 'Utility/Html')
 
-(defun Page [content] 
+(deval Copyright (Footer (Link 'https://marcia.li/copyright' '© dmarcia 2022')))
+
+(defun Page [title content] 
   (Joins 
     [ DocType
       (Html 'en' (Joins 
-        [ (Head '')
-          (Body content)
+        [ (Head (Title (Join title ' | marcia.li')))
+          (Body (Join content Copyright))
         ]))
     ]))

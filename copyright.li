@@ -1,0 +1,9 @@
+(use 'Framework/Page')
+
+\begin {map (Page 'Copyright')}
+
+\(Link 'https://raw.githubusercontent.com/dmarcia/marcia.li/main/LICENSE' 'License for this source code')
+\(Link 'https://raw.githubusercontent.com/dmarcia/dmarcia.github.io/main/LICENSE' 'License for the generated code')
+\(Link 'https://raw.githubusercontent.com/dmarcia/lilac/main/LICENSE' 'License for Lilac')
+
+\end
