@@ -127,3 +127,18 @@ footer {
 .post-footer .link + .link {
   margin-left: 1rem;
 }
+
+.book {
+}
+
+.book + .book {
+  margin-top: 1rem;
+}
+
+.author {
+  font-weight: 600;
+}
+
+.author + .title {
+  margin-left: 0.5rem;
+}

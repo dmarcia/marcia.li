@@ -1,0 +1,41 @@
+(use 'Framework/Components')
+
+(deval Books 
+  [ {author 'Francesc Miralles and Hector Garcia' title 'Ikigai: The Japanese Secret to a Long and Happy Life'} 
+    {author 'Peter Hollins' title 'Finish What You Start: The Art of Following Through, Taking Action, Executing, & Self-Discipline'}
+    {author 'James Clear' title 'Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones'}
+    {author 'Rupi Kaur' title 'Milk and Honey'}
+    {author 'Amanda Lovelace' title 'The Princess Saves Herself in This One'}
+    {author 'Idil Ahmed' title 'Manifest Now'}
+  ])
+
+(defun Book [book] 
+  (Div [(Class 'book')] 
+    [ (Span [(Class 'author')] [(Key 'author' book)])
+      (Span [(Class 'title')] [(Key 'title' book)])
+    ]))
+
+(deval Articles
+  [ {link 'https://brianmckenna.org/blog/type_annotation_cofree' title 'Bottom-up Type Annotation with the Cofree Comonad'}
+  ])
+
+(defun Article [article]
+  (Link (Key 'link' article) (Key 'title' article)))
+
+\begin {map (Page {title 'Library'})}
+
+\(Header 'Papers')
+
+\(Seperator)
+
+\(Header 'Books')
+
+\(Joins (Map Book Books))
+
+\(Seperator)
+
+\(Header 'Articles')
+
+\(Joins (Map Article Articles))
+
+\end

@@ -13,4 +13,8 @@
   [(Class 'post-links center-text')] 
   (Map PostLink Posts))
 
+\(Seperator)
+
+\(Div [(Class 'center-text')] [(Link '/library' 'Papers, books, or articles I liked')])
+
 \end
