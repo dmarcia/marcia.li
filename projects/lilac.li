@@ -1,7 +1,0 @@
-(use 'Framework/Page')
-
-\begin {map (Page {title 'Lilac' header 'Lilac' })}
-
-
-
-\end

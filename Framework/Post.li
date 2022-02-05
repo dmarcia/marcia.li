@@ -1,6 +1,0 @@
-(use 'Framework/Page')
-
-(defun Post [map inner] 
-  (Page 
-    {title (Key 'title' map) header (Key 'title' map)} 
-    (Joins [(H2 (Join 'Posted on ' (Key 'date' map))) inner])))

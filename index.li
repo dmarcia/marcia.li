@@ -1,18 +1,39 @@
-(use 'Framework/Page')
-(use 'Posts')
+(use 'Framework/Components')
 
-\begin {map (Page {title '❀' header 'marcia.li'})}
+\begin {map (Page {title '❀'})}
 
-\begin {map P}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id nisl orci. Phasellus eu orci ipsum. Sed libero neque, cursus sit amet consequat in, posuere sed mauris. Donec ipsum diam, mollis vitae mi sed, tempus imperdiet nulla. Pellentesque faucibus massa quis quam dignissim, dictum sodales metus sollicitudin. Morbi ac mollis ligula, eu vestibulum nulla. Mauris mi ligula, sollicitudin vel congue et, imperdiet ut enim. Mauris accumsan purus at purus cursus, at euismod mi pellentesque. Proin augue nisl, volutpat et ligula at, gravida dapibus felis. Donec egestas turpis et molestie dignissim. Cras lacus mi, molestie at scelerisque eget, porttitor ut turpis. Sed facilisis orci ut rhoncus iaculis. Sed sollicitudin consequat nisi, vel tincidunt sapien euismod sed. 
+\(UnicodeThingHeader '❁')
+
+\begin {map Paragraph-EN}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget est id 
+ex feugiat pellentesque. Fusce venenatis nulla in faucibus rutrum. Duis
+blandit faucibus diam, in porttitor nisi. Vestibulum tincidunt lacinia massa 
+sit amet tincidunt. Curabitur ullamcorper justo sit amet ante congue, vel 
+mollis sapien auctor. Aliquam at lacus turpis. Nam vitae tortor eu quam maximus 
+finibus et ac leo. Nunc ultricies tincidunt lorem, nec congue lacus facilisis 
+sit amet. Pellentesque habitant morbi tristique senectus et netus et malesuada 
+fames ac turpis egestas. Sed ultricies ante ipsum, a ultricies purus dapibus 
+sed. Maecenas vehicula accumsan dui, eu dictum odio commodo vitae. Etiam consectetur 
+dolor scelerisque elementum vulputate. Nullam ut urna ac purus faucibus aliquam. 
+Mauris eget purus nec nunc accumsan commodo nec quis diam. Proin ornare turpis
+nec leo sodales posuere. 
 \end
 
-\(Fold Join '' 
-  (Map 
-    (lambda [post] 
-      (Link 
-        (Key 'path' post) 
-        (Joins [(Key 'title' post) ' - ' (Key 'date' post)]))) 
-    Posts))
+\(Image 'https://picsum.photos/600/400')
+
+\begin {map Paragraph-KO}
+대통령은 국가의 원수이며. 광물 기타 중요한 지하자원·수산자원·수력과 경제상 이용할 수 있는 
+자연력은 법률이 정하는 바에 의하여 일정한 기간 그 채취·개발 또는 이용을 특허할 수 있다, 
+선거에 관한 경비는 법률이 정하는 경우를 제외하고는 정당 또는 후보자에게 부담시킬 수 없다, 
+대통령후보자가 1인일 때에는 그 득표수가 선거권자 총수의 3분의 1 이상이 아니면 대통령으로 
+당선될 수 없다. 국가는 건전한 소비행위를 계도하고 생산품의 품질향상을 촉구하기 위한 소비자보호운동을 
+법률이 정하는 바에 의하여 보장한다. 대통령·국무총리·국무위원·행정각부의 장·헌법재판소 
+재판관·법관·중앙선거관리위원회 위원·감사원장·감사위원 기타 법률이 정한 공무원이 그 직무집행에 
+있어서 헌법이나 법률을 위배한 때에는 국회는 탄핵의 소추를 의결할 수 있다, 대통령은 국가의 원수이며. 
+국회의원과 정부는 법률안을 제출할 수 있다. 주거에 대한 압수나 수색을 할 때에는 검사의 신청에 
+의하여 법관이 발부한 영장을 제시하여야 한다. 다만. 다만. 일반사면을 명하려면 국회의 동의를 얻어야 한다.
+\end
+
+\(Seperator)
 
 \end

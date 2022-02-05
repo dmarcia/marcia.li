@@ -1,0 +1,87 @@
+@import '/assets/reset.css';
+@import '/assets/layout.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&family=Source+Serif+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+
+* {
+  font-family: 'Source Serif Pro', Georgia, 'Times New Roman', Times, serif;
+}
+
+body {
+  text-align: justify;
+  margin: 5rem auto;
+}
+
+footer {
+  margin: 5rem 0;
+  text-align: center;
+}
+
+.copyright {
+  color: #444444;
+}
+
+.header {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 2rem 0;
+}
+
+.unicode-thing-header {
+  font-size: 6rem;
+  font-weight: 300;
+  margin: 0 0 1rem 0;
+}
+
+.image {
+  height: 17.5rem;
+  width: auto;
+  display: block;
+  margin: 2rem auto;
+  transition: scale 0.05s linear; 
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.image:hover {
+  scale: 1.25;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+}
+
+.en {
+  font-family: 'Source Serif Pro', Georgia, 'Times New Roman', Times, serif;
+}
+
+.ko {
+  font-family: 'Noto Serif KR', Georgia, 'Times New Roman', Times, serif;
+}
+
+.paragraph {
+}
+
+.paragraph + .paragraph {
+  margin-top: 2rem;
+}
+
+.paragraph.en {
+  line-height: 1.65rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.paragraph.ko {
+  line-height: 2rem;
+  font-size: 1.45rem;
+}
+
+.seperator {
+  margin: 2rem 0;
+  border: none;
+  letter-spacing: 0.5rem;
+  font-size: 2rem;
+}
+
+.seperator::before {
+  content: '***';
+  display: block;
+  text-align: center;
+}

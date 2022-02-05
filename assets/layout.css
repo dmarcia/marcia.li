@@ -1,0 +1,25 @@
+@media all and (max-width:768px) {
+  body {
+    width: 95%;
+  }
+}
+@media all and (min-width:768px) {
+  body {
+    width: 60%;
+  }
+}
+@media all and (min-width:1024px) {
+  body {
+    width: 50%;
+  }
+}
+@media all and (min-width:1848px) {  
+  body {
+    width: 42%;
+  }
+}
+@media all and (min-width:2300px) {
+  body {
+    width: 60em;
+  }
+}

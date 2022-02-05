@@ -1,0 +1,38 @@
+(use 'Framework/Utility')
+
+(deval Doctype '<!doctype html>')
+
+(defun FlattenAttribs [attribs] (Joins (Map (Join ' ') attribs)))
+
+(defun Tag [tag attribs inner] 
+  (Joins ['<' tag (FlattenAttribs attribs) '>' (Joins inner) '</' tag '>']))
+
+(deval Html (Tag 'html' []))
+
+(deval Head (Tag 'head' []))
+
+(deval Body (Tag 'body' []))
+
+(defun Title [title] (Tag 'title' [] [title]))
+
+(defun P [as inner] (Tag 'p' as inner))
+
+(defun CSS [href] (Joins ['<link ' (Href href) ' rel="stylesheet">']))
+
+(defun Attrib [name inner] (Joins [name '="' inner '"']))
+
+(deval Href (Attrib 'href'))
+
+(deval Src (Attrib 'src'))
+
+(deval Class (Attrib 'class'))
+
+(defun Img [attribs] (Joins ['<img' (FlattenAttribs attribs) '>']))
+
+(defun Footer [as inner] (Tag 'footer' as inner))
+
+(defun Span [as inner] (Tag 'span' as inner))
+
+(defun H1 [as inner] (Tag 'h1' as inner))
+
+(defun Hr [as] (Joins ['<hr ' (FlattenAttribs as) '>']))

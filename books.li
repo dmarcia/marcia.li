@@ -1,5 +1,0 @@
-(use 'Framework/Page')
-
-\begin {map (Page {title 'Read books' header 'Read books'})}
-
-\end

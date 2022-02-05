@@ -3,7 +3,7 @@ DIST=dist
 
 build:
 	@mkdir -p $(DIST)
-	@cp style.css $(DIST) 
+	@cp -r assets $(DIST) 
 	$(LILAC) build
 
 serve: 

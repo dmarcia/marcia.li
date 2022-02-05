@@ -1,0 +1,31 @@
+(use 'Framework/Html')
+
+(deval Copyright 
+  (Footer [] 
+    [ (Span [(Class 'copyright')] ['© dmarcia 2022'])
+    ]))
+
+(defun Page [map inner] 
+  (Joins
+    [ Doctype
+      (Head 
+        [ (Title (Join (Key 'title' map) ' | marcia.li'))
+          (CSS '/assets/style.css')
+        ])
+      (Body
+        [ inner
+          Copyright
+        ])
+    ]))
+
+(defun Header [inner] (H1 [(Class 'header')] [inner]))
+
+(defun UnicodeThingHeader [inner] (H1 [(Class 'unicode-thing-header')] [inner]))
+
+(defun Image [src] (Img [(Class 'image') (Src src)]))
+
+(defun Paragraph-EN [inner] (P [(Class 'paragraph en')] [inner]))
+
+(defun Paragraph-KO [inner] (P [(Class 'paragraph ko')] [inner]))
+
+(deval Seperator (Hr [(Class 'seperator')]))
