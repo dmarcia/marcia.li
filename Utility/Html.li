@@ -12,3 +12,5 @@
 (defun Link [link inner] (Tag1 'a' (Attrib 'href' link) inner))
 (deval Title (Tag 'title'))
 (defun Stylesheet [href] (Joins ['<link rel="stylesheet" href="' href '">']))
+(deval H1 (Tag 'h1'))
+(deval H2 (Tag 'h2'))

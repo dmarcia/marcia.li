@@ -1,5 +1,5 @@
 (use 'Framework/Page')
 
-\begin {map (Page 'Read papers')}
+\begin {map (Page {title 'Read papers' header 'Read papers'})}
 
 \end

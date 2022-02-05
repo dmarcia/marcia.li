@@ -1,0 +1,34 @@
+(use 'Framework/Post')
+
+(deval Post-example 
+  {title 'Example' date '2/4/22' path 'posts/example'})
+
+\begin {map (Post Post-example)}
+
+\begin {map P}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id nisl orci. 
+Phasellus eu orci ipsum. Sed libero neque, cursus sit amet consequat in, 
+posuere sed mauris. Donec ipsum diam, mollis vitae mi sed, tempus imperdiet 
+nulla. Pellentesque faucibus massa quis quam dignissim, dictum sodales metus 
+sollicitudin. Morbi ac mollis ligula, eu vestibulum nulla. Mauris mi ligula, 
+sollicitudin vel congue et, imperdiet ut enim. Mauris accumsan purus at purus cursus, 
+at euismod mi pellentesque. Proin augue nisl, volutpat et ligula at, gravida dapibus 
+felis. Donec egestas turpis et molestie dignissim. Cras lacus mi, molestie at 
+scelerisque eget, porttitor ut turpis. Sed facilisis orci ut rhoncus iaculis. 
+Sed sollicitudin consequat nisi, vel tincidunt sapien euismod sed. 
+\end
+
+\begin {map P}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id nisl orci. 
+Phasellus eu orci ipsum. Sed libero neque, cursus sit amet consequat in, 
+posuere sed mauris. Donec ipsum diam, mollis vitae mi sed, tempus imperdiet 
+nulla. Pellentesque faucibus massa quis quam dignissim, dictum sodales metus 
+sollicitudin. Morbi ac mollis ligula, eu vestibulum nulla. Mauris mi ligula, 
+sollicitudin vel congue et, imperdiet ut enim. Mauris accumsan purus at purus cursus, 
+at euismod mi pellentesque. Proin augue nisl, volutpat et ligula at, gravida dapibus 
+felis. Donec egestas turpis et molestie dignissim. Cras lacus mi, molestie at 
+scelerisque eget, porttitor ut turpis. Sed facilisis orci ut rhoncus iaculis. 
+Sed sollicitudin consequat nisi, vel tincidunt sapien euismod sed. 
+\end
+
+\end

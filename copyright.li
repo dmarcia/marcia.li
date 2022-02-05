@@ -1,6 +1,6 @@
 (use 'Framework/Page')
 
-\begin {map (Page '©')}
+\begin {map (Page {title '©' header 'copyright'})}
 
 \(Link 'https://raw.githubusercontent.com/dmarcia/marcia.li/main/LICENSE' 'License for this source code')
 \(Link 'https://raw.githubusercontent.com/dmarcia/dmarcia.github.io/main/LICENSE' 'License for the generated code')

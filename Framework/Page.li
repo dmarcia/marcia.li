@@ -2,14 +2,18 @@
 
 (deval Copyright (Footer (Link '/copyright' '© dmarcia 2022')))
 
-(defun Page [title content] 
+(defun Page [map content] 
   (Joins 
     [ DocType
       (Html 'en' (Joins 
         [ (Head (Joins 
-            [ (Title (Join title ' | marcia.li'))
-              (Stylesheet 'style.css')
+            [ (Title (Join (Key 'title' map) ' | marcia.li'))
+              (Stylesheet '/style.css')
             ]))
-          (Body (Join content Copyright))
+          (Body 
+            (Joins 
+              [ (H1 (Key 'header' map)) 
+                content Copyright
+              ]))
         ]))
     ]))

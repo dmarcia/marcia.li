@@ -1,6 +1,6 @@
 (use 'Framework/Page')
 
-\begin {map (Page 'Lilac')}
+\begin {map (Page {title 'Lilac' header 'Lilac' })}
 
 
 
