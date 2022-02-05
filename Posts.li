@@ -1,0 +1,3 @@
+(use 'posts/example')
+
+(deval Posts [Post-example])

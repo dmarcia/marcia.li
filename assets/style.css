@@ -55,6 +55,11 @@ footer {
   font-family: 'Noto Serif KR', Georgia, 'Times New Roman', Times, serif;
 }
 
+.center-text {
+  display: block;
+  text-align: center;
+}
+
 .paragraph {
 }
 
@@ -74,7 +79,7 @@ footer {
 }
 
 .seperator {
-  margin: 2rem 0;
+  margin: 3rem 0;
   border: none;
   letter-spacing: 0.5rem;
   font-size: 2rem;
@@ -84,4 +89,41 @@ footer {
   content: '***';
   display: block;
   text-align: center;
+}
+
+.date {
+  font-size: 0.8rem;
+  color:rgb(0 0 0 / 0.55)
+}
+
+.date + .paragraph {
+  margin-top: 1.5rem;
+}
+
+.link {
+  color: black;
+}
+
+.post-link {
+}
+
+.post-link + .post-link {
+  margin-top: 0.75rem;
+}
+
+.post-link .link {
+  margin-left: 1rem;
+}
+
+.mini {
+  font-size: 0.85rem;
+}
+
+.post-footer {
+  display: block;
+  text-align: center;
+}
+
+.post-footer .link + .link {
+  margin-left: 1rem;
 }

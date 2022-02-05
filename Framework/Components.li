@@ -8,15 +8,32 @@
 (defun Page [map inner] 
   (Joins
     [ Doctype
-      (Head 
-        [ (Title (Join (Key 'title' map) ' | marcia.li'))
-          (CSS '/assets/style.css')
-        ])
-      (Body
-        [ inner
-          Copyright
+      (Html 
+        [ (Head 
+            [ (Title (Join (Key 'title' map) ' | marcia.li'))
+              (CSS '/assets/style.css')
+            ])
+          (Body
+            [ inner
+              Copyright
+            ])
         ])
     ]))
+
+(defun Post [map inner] 
+  (Page map 
+    (Joins 
+      [ (Header (Key 'title' map))
+        (Date (Join'Posted on ' (Key 'date' map)))
+        inner
+        Seperator
+        (Div 
+          [(Class 'post-footer')] 
+          [ (Link '/' 'marcia.li')
+            (Link 'https://github.com/dmarcia' 'GitHub')
+            (Link 'https://github.com/dmarcia/marcia.li' 'Source')
+          ]) 
+      ])))
 
 (defun Header [inner] (H1 [(Class 'header')] [inner]))
 
@@ -29,3 +46,13 @@
 (defun Paragraph-KO [inner] (P [(Class 'paragraph ko')] [inner]))
 
 (deval Seperator (Hr [(Class 'seperator')]))
+
+(defun Date [inner] (Span [(Class 'date')] [inner]))
+
+(defun Link [href inner] (A [(Class 'link') (Href href)] [inner]))
+
+(defun PostLink [post] 
+  (Div [(Class 'post-link')] 
+    [ (Date (Key 'date' post))
+      (Link (Key 'path' post) (Key 'title' post))
+    ]))
