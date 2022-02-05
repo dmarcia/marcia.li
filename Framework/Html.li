@@ -35,4 +35,4 @@
 
 (defun H1 [as inner] (Tag 'h1' as inner))
 
-(defun Hr [as] (Joins ['<hr ' (FlattenAttribs as) '>']))
+(defun Hr [as] (Joins ['<hr' (FlattenAttribs as) '>']))
