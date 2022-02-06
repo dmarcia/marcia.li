@@ -1,0 +1,188 @@
+(use 'Framework/Components')
+
+(deval Post-void-linux-install 
+  {title 'Encrypted Void Installation' date '02/06/2022' path '/posts/void-linux-install' tags ['GNU/Linux']})
+
+\begin {map (Post Post-void-linux-install)}
+
+\begin {map Paragraph-EN}
+I primarily created this for myself in the future when I install Void Linux on
+my devices. I cant possibly remember all of this and it usually has me scouring 
+the internet for deprecated articles. This may be of interest to others who need 
+an encrypted installation. The hardware I'm using is a Thinkpad T470s with a 256GB NVME SSD.
+\end
+
+\(Header 'Partitions')
+\begin {map Paragraph-EN}
+The boot partition needs to be atleast \(Code '260M'), 
+marked as \(Code 'EFI System'). Here's the excerpts for \(Code 'fdisk').
+\end
+
+\begin {map Code}
+fdisk /dev/nvme0n1
+
+# Create a new GPT disklabel
+Command (m for help): g
+Created a new GPT disklabel (GUID: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX).
+
+# Create a new partition of 260M, this is the boot partition,
+# the partition number and first sector are the default
+Command (m for help): n
+Partition number (1-128, default 1): 
+First sector (2048-500118158, default 2048): 
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-500118158, default 500118158): +260M
+
+# Set the type of the boot partition to EFI System
+Command (m for help): t
+Selected partition 1
+Partition type (type L to list all types): 1
+Changed type of partition 'Linux filesystem' to 'EFI System'.
+
+# And the other partition for logical volumes,
+# the partition number, first, and last sector are the default
+Command (m for help): n
+Partition number (2-128, default 2): 
+First sector (534528-500118158, default 534528): 
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (534528-500118158, default 500118158):
+
+# Good to go, type `w` to write to disk.
+\end 
+
+\(Header 'Encryption')
+\begin {map Paragraph-EN}
+I'm encrypting my second partition with the defualt cipher for LUKS (\(Code 'aes-xts-plain64')).
+\end
+
+\begin {map Code}
+cryptsetup --cipher aes-xts-plain64 --key-size 512 --hash sha512 --iter-time 2000 --align-payload=2048 -v luksFormat /dev/nvme0n1p2
+\end
+
+\begin {map Paragraph-EN}
+Now, to open it.
+\end 
+
+\(Code 'cryptsetup luksOpen /dev/nvme0n1p2 voidlinux')
+
+\(Header 'Logical Volumes')
+\begin {map Code}
+pvcreate /dev/mapper/voidlinux
+vgcreate voidlinux /dev/mapper/voidlinux
+
+# Consume the entire disk for the root partition
+lvcreate -l 100%FREE -n root voidlinux
+\end
+
+\(Header 'Filesystems')
+\begin {map Paragraph-EN}
+The \(Code 'EFI System') partition must be formatted in \(Code 'FAT32').
+\end
+
+\(Code 'mkfs.fat -F32 /dev/nvme0n1p1')
+
+\begin {map Paragraph-EN}
+For the root partition, I'm using \(Code 'XFS'), but you can use whatever.
+\end
+
+\(Code 'mkfs.xfs /dev/mapper/voidlinux-root')
+
+\(Header 'Mounting')
+\begin {map Code}
+mount /dev/mapper/voidlinux-root /mnt
+mkdir /mnt/boot
+mount /dev/nvme0n1p1 /mnt/boot
+\end
+
+\(Header 'Installing the Base System')
+\begin {map Paragraph-EN}
+I'm using the mirror \(Link 'https://mirrors.servercentral.com/voidlinux/current' 'https://mirrors.servercentral.com/voidlinux/current')
+because it's closest to my location, and has less issues. Selected from the \(Link 'https://docs.voidlinux.org/xbps/repositories/mirrors/index.html' 'list of mirrors'). 
+I've also added \(Code 'iwd') and \(Code 'vim'), for wifi and editing config files post-installation.
+\end
+
+\begin {map Code}
+export XBPS_ARCH=x86_64
+xbps-install -S -R https://mirrors.servercentral.com/voidlinux/current -r /mnt lvm2 cryptsetup grub-x86_64-efi base-system iwd vim
+\end
+
+\(Header 'Chroot')
+\begin {map Code}
+mkdir /mnt/{dev,proc,sys}
+mount -t proc /proc /mnt/proc
+mount --rbind /dev /mnt/dev
+mount --rbind /sys /mnt/sys
+chroot /mnt /bin/bash
+\end
+
+\(Header 'Configuration')
+\begin {map Code}
+# Set the root password 
+passwd root
+
+# Set the proper permissions
+chown root:root /
+chmod 755 /
+
+# Set the number of TTYs to 2 or more
+vim /etc/rc.conf
+
+# Set hostname
+echo T470s > /etc/hostname 
+
+# Uncomment desired locale
+vim /etc/default/libc-locales
+\end
+
+\(Header 'FSTAB')
+\begin {map Paragraph-EN}
+\(Code 'lsblk') may not show the UUID, but you can use \(Code 'blkid /dev/nvme0n1p1') instead.
+\end
+
+\begin {map Code}
+lsblk -f
+NAME         FSTYPE FSVER LABEL     UUID                                   FSAVAIL FSUSE% MOUNTPOINT
+...                                 
+nvme0n1                                                                                   
+├─nvme0n1p1  vfat                   XXXX-XXXX                                 256M     0% /boot
+...
+
+# Now to edit /etc/fstab
+vim /etc/fstab 
+\end
+
+\begin {map Paragraph-EN}
+Edit your FSTAB to look something like this:
+\end
+
+\begin {map Code}
+# file system              dir     type       options                 dump      pass
+UUID=XXXX-XXXX             /boot   vfat       defaults                0         2
+/dev/mapper/voidlinux-root /       xfs        defaults                0         1
+tmpfs                      /tmp    tmpfs      defaults,nosuid,nodev   0         0
+\end
+
+\(Header 'Grub')
+\begin {map Code}
+# If you get directory non-existent error, do this
+mkdir /boot/grub
+
+echo 'hostonly=yes' > /etc/dracut.conf.d/hostonly.conf
+
+# Add rd.auto=1 to GRUB_CMDLINE_LINUX_DEFAULT
+vim /etc/default/grub
+\end
+
+\(Header 'Reconfiguration')
+\begin {map Code}
+xbps-reconfigure -fa 
+\end
+
+\(Header 'Exiting')
+\begin {map Code}
+exit
+umount -R /mnt
+
+# And lastly...
+reboot 
+\end 
+
+\end 

@@ -1,3 +1,6 @@
 (use 'posts/example')
+(use 'posts/void-linux-install')
 
-(deval Posts [Post-example])
+(deval Posts 
+  [ Post-void-linux-install
+    Post-example ])

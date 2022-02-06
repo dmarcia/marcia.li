@@ -56,3 +56,5 @@
     [ (Date (Key 'date' post))
       (Link (Key 'path' post) (Key 'title' post))
     ]))
+
+(defun Code [inner] (Tag 'code' [(Class 'code')] [inner]))

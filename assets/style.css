@@ -24,7 +24,7 @@ footer {
 .header {
   font-size: 2rem;
   font-weight: 600;
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 1rem 0;
 }
 
 .unicode-thing-header {
@@ -141,4 +141,18 @@ footer {
 
 .author + .title {
   margin-left: 0.5rem;
+}
+
+.code {
+  font-family: monospace;
+  font-size: 1rem;
+  white-space: pre-line;
+}
+
+.paragraph + .code {
+  margin-top: 1rem;
+}
+
+.code + .paragraph {
+  margin-top: 1rem;
 }
